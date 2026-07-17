@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 
 type QuarterKey = "Q1" | "Q2" | "Q3*";
 
@@ -124,7 +125,7 @@ export default function Home() {
   const maxReads = Math.max(...quarterOrder.map((key) => quarterData[key].dailyReads));
 
   const ring = useMemo(() => {
-    const colors = ["#10b981", "#38bdf8", "#a78bfa", "#fbbf24", "#fb7185", "#64748b"];
+    const colors = ["#2563eb", "#38bdf8", "#4f7df3", "#60a5fa", "#818cf8", "#94a3b8"];
     let cursor = 0;
     return `conic-gradient(${active.channels
       .map(([, value], index) => {
@@ -139,12 +140,15 @@ export default function Home() {
     <main>
       <header className="topbar">
         <div className="brand">
-          <div className="brand-mark">M</div>
+          <img className="brand-logo" src="/maycur-logo.png" alt="Maycur 每刻" />
           <div>
-            <strong>每刻科技</strong>
             <span>微信公众号运营数据中心</span>
           </div>
         </div>
+        <nav className="main-nav" aria-label="主要页面">
+          <Link className="active" href="/">综合看板</Link>
+          <Link href="/growth">用户增长对比</Link>
+        </nav>
         <div className="updated">
           <span className="live-dot" />
           数据更新至 2026.07.16
