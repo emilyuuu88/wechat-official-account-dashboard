@@ -34,18 +34,18 @@ const quarters = [
     tone: "q2",
   },
   {
-    key: "Q3*",
-    period: "07.01 — 07.16",
-    badge: "16天阶段数据",
-    days: 16,
+    key: "Q3",
+    period: "07.01 — 09.30",
+    badge: "完整季度",
+    days: 92,
     start: 43461,
-    end: 44622,
-    newFollowers: 1465,
-    unfollows: 304,
-    net: 1161,
-    dailyNew: 91.6,
-    dailyNet: 72.6,
-    growthRate: 2.7,
+    end: 48943,
+    newFollowers: 6922,
+    unfollows: 1440,
+    net: 5482,
+    dailyNew: 75.2,
+    dailyNet: 59.6,
+    growthRate: 12.6,
     unfollowRate: 20.8,
     tone: "q3",
   },
@@ -77,7 +77,7 @@ export default function GrowthComparison() {
         </nav>
         <div className="updated">
           <span className="live-dot" />
-          数据更新至 2026.07.16
+          数据更新至 2026.09.30
         </div>
       </header>
 
@@ -87,15 +87,14 @@ export default function GrowthComparison() {
           <h1>用户增长季度对比</h1>
           <p>
             将季度总量与日均效率拆开看，既看规模，也看增长速度。
-            Q3 为截至 7 月 16 日的阶段数据。
           </p>
         </div>
         <div className="growth-hero-brand">
           <img src={`${basePath}/maycur-mascot.png`} alt="每刻吉祥物每小刻" />
           <div className="growth-hero-stat">
             <span>每小刻关注增长播报</span>
-            <strong>+9,563</strong>
-            <small>年内累计净增 · 35,059 → 44,622</small>
+            <strong>+13,884</strong>
+            <small>年内累计净增 · 35,059 → 48,943</small>
           </div>
         </div>
       </section>
@@ -108,9 +107,9 @@ export default function GrowthComparison() {
         </div>
         <i />
         <div className="featured-insight">
-          <span>Q3* vs Q2 日均</span>
-          <strong>日均净增 +45.5%</strong>
-          <p>16天阶段增长速度显著领先</p>
+          <span>Q3 vs Q2</span>
+          <strong>净增关注 +20.6%</strong>
+          <p>日均净增同步提升 19.4%</p>
         </div>
         <i />
         <div>
@@ -179,7 +178,7 @@ export default function GrowthComparison() {
           <article>
             <span>保持</span>
             <h3>强化高质量获客</h3>
-            <p>Q3*日均新增达到91.6，延续标杆客户与AI产品内容带来的增长势能。</p>
+            <p>Q3 日均新增达到 75.2，较 Q2 提升 17.9%，继续强化标杆客户与 AI 产品内容。</p>
           </article>
           <article>
             <span>优化</span>
@@ -188,14 +187,14 @@ export default function GrowthComparison() {
           </article>
           <article>
             <span>验证</span>
-            <h3>补齐完整Q3</h3>
-            <p>季度结束后补齐7月17日至9月30日数据，再评估总量是否延续领先。</p>
+            <h3>联动阅读与转化</h3>
+            <p>用户增长已经提速，下一步需验证新增关注能否转化为稳定阅读和内容互动。</p>
           </article>
         </div>
       </section>
 
       <footer>
-        <p>Q3* 为 2026.07.01—07.16 阶段数据，日均指标用于跨季度可比。</p>
+        <p>Q1、Q2、Q3 均为完整季度，用户增长按微信公众平台每日数据汇总。</p>
         <p>© 2026 每刻科技 · 用户增长季度对比</p>
       </footer>
     </main>

@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
-type QuarterKey = "Q1" | "Q2" | "Q3*";
+type QuarterKey = "Q1" | "Q2" | "Q3";
 
-const quarterOrder: QuarterKey[] = ["Q1", "Q2", "Q3*"];
+const quarterOrder: QuarterKey[] = ["Q1", "Q2", "Q3"];
 
 const quarterData = {
   Q1: {
@@ -76,39 +76,39 @@ const quarterData = {
     ],
     takeaway: "增长提速、互动质量提升，但发文增加未带动阅读规模。",
   },
-  "Q3*": {
-    label: "Q3*",
-    period: "07.01 — 07.16",
-    days: 16,
+  Q3: {
+    label: "Q3",
+    period: "07.01 — 09.30",
+    days: 92,
     start: 43461,
-    end: 44622,
-    newFollowers: 1465,
-    unfollows: 304,
-    net: 1161,
-    growthRate: 2.7,
-    dailyNet: 72.6,
-    reads: 2474,
-    dailyReads: 154.6,
-    shares: 165,
-    saves: 9,
-    published: 3,
-    readsPerArticle: 824.7,
-    shareRate: 6.7,
-    saveRate: 0.36,
+    end: 48943,
+    newFollowers: 6922,
+    unfollows: 1440,
+    net: 5482,
+    growthRate: 12.6,
+    dailyNet: 59.6,
+    reads: 8382,
+    dailyReads: 91.1,
+    shares: 543,
+    saves: 40,
+    published: 21,
+    readsPerArticle: 399.1,
+    shareRate: 6.5,
+    saveRate: 0.48,
     channels: [
-      ["公众号消息", 44.1],
-      ["朋友圈", 30.2],
-      ["搜一搜", 9.4],
-      ["聊天会话", 9.2],
-      ["公众号主页", 5.4],
-      ["其他", 1.7],
+      ["公众号消息", 38.2],
+      ["朋友圈", 27.2],
+      ["搜一搜", 14.2],
+      ["公众号主页", 8.8],
+      ["聊天会话", 8.6],
+      ["其他（含推荐）", 3.0],
     ],
     articles: [
-      ["世界500强顺丰集团携手每刻科技，共创AI数智费控新标杆", 1182, "标杆客户"],
-      ["采购应付如何打通对公支付？每刻应付 × 每刻报销实现供应商付款全流程自动化", 500, "产品方案"],
-      ["每刻科技5-7月重点功能速递：AI审核、全球化、规则引擎全面升级", 327, "产品升级"],
+      ["世界500强顺丰集团携手每刻科技，共创AI数智费控新标杆", 1206, "标杆客户"],
+      ["每刻科技5-7月重点功能速递：AI审核、全球化、规则引擎全面升级", 719, "产品升级"],
+      ["采购应付如何打通对公支付？每刻应付 × 每刻报销实现供应商付款全流程自动化", 571, "产品方案"],
     ],
-    takeaway: "阶段数据表现强劲，日均净增与篇均阅读均为三期最高。",
+    takeaway: "净增关注与增长率均为三季度最高，内容阅读效率仍需修复。",
   },
 } as const;
 
@@ -120,7 +120,7 @@ function delta(current: number, previous: number) {
 }
 
 export default function Home() {
-  const [activeQuarter, setActiveQuarter] = useState<QuarterKey>("Q3*");
+  const [activeQuarter, setActiveQuarter] = useState<QuarterKey>("Q3");
   const active = quarterData[activeQuarter];
   const maxNet = Math.max(...quarterOrder.map((key) => quarterData[key].net));
   const maxReads = Math.max(...quarterOrder.map((key) => quarterData[key].dailyReads));
@@ -152,7 +152,7 @@ export default function Home() {
         </nav>
         <div className="updated">
           <span className="live-dot" />
-          数据更新至 2026.07.16
+          数据更新至 2026.09.30
         </div>
       </header>
 
@@ -161,8 +161,7 @@ export default function Home() {
           <p className="eyebrow">2026 PERFORMANCE OVERVIEW</p>
           <h1>公众号季度数据看板</h1>
           <p className="hero-note">
-            聚焦用户增长、内容效率与渠道质量。Q3 为 7 月 1—16 日阶段数据，
-            建议优先比较日均指标。
+            聚焦用户增长、内容效率与渠道质量，完整呈现 2026 年前三季度表现。
           </p>
         </div>
         <div className="quarter-switch" aria-label="选择季度">
@@ -181,7 +180,7 @@ export default function Home() {
       </section>
 
       <section className="status-strip">
-        <span className="status-pill">{active.label === "Q3*" ? "阶段数据" : "完整季度"}</span>
+        <span className="status-pill">完整季度</span>
         <strong>{active.label} · {active.period}</strong>
         <span>{active.days} 天数据</span>
         <span className="status-insight">{active.takeaway}</span>
@@ -271,8 +270,8 @@ export default function Home() {
           </div>
           <div className="trend-foot">
             <div><span>Q2 净增环比</span><strong className="positive">+{delta(4545, 3857)}%</strong></div>
-            <div><span>Q3* 日均净增较 Q2</span><strong className="positive">+{delta(72.6, 49.9)}%</strong></div>
-            <p>* Q3 为阶段数据，不与完整季度直接比较总量。</p>
+            <div><span>Q3 净增环比</span><strong className="positive">+{delta(5482, 4545)}%</strong></div>
+            <p>三个季度均为完整季度，可直接比较总量与日均效率。</p>
           </div>
         </article>
 
@@ -367,18 +366,18 @@ export default function Home() {
         <div className="insight-grid">
           <article>
             <span>01</span>
-            <h3>增长强，效率需修复</h3>
-            <p>Q2 净增关注增长 17.8%，但总阅读下降 19.3%，发文增量没有转化为阅读增量。</p>
+            <h3>用户增长继续提速</h3>
+            <p>Q3 净增关注 5,482，环比增长 20.6%；日均净增 59.6，同样创前三季度最高。</p>
           </article>
           <article>
             <span>02</span>
-            <h3>聚焦三类强选题</h3>
-            <p>里程碑、标杆客户、AI 产品升级持续进入 TOP3，建议形成稳定内容矩阵。</p>
+            <h3>阅读效率仍需修复</h3>
+            <p>Q3 发文 21 篇，但总阅读环比下降 15.5%，篇均阅读降至 399.1。</p>
           </article>
           <article>
             <span>03</span>
-            <h3>放大消息与搜索</h3>
-            <p>公众号消息占比持续提升；同时强化标题关键词，承接“搜一搜”长尾流量。</p>
+            <h3>放大高质量选题</h3>
+            <p>标杆客户、产品升级与产品方案占据 TOP3，建议围绕三类内容形成稳定矩阵。</p>
           </article>
         </div>
       </section>
@@ -393,15 +392,15 @@ export default function Home() {
         <div className="table-wrap">
           <table>
             <thead>
-              <tr><th>指标</th><th>Q1</th><th>Q2</th><th>Q3*</th><th>判断</th></tr>
+              <tr><th>指标</th><th>Q1</th><th>Q2</th><th>Q3</th><th>判断</th></tr>
             </thead>
             <tbody>
-              <tr><td>净增关注</td><td>3,857</td><td>4,545</td><td>1,161</td><td className="positive">增长动能增强</td></tr>
-              <tr><td>日均净增</td><td>42.9</td><td>49.9</td><td>72.6</td><td className="positive">Q3*领先</td></tr>
-              <tr><td>总阅读人数</td><td>12,288</td><td>9,917</td><td>2,474</td><td>Q2 环比 -19.3%</td></tr>
-              <tr><td>篇均阅读</td><td>819.2</td><td>521.9</td><td>824.7</td><td>Q3*效率回升</td></tr>
-              <tr><td>分享率</td><td>5.5%</td><td>6.5%</td><td>6.7%</td><td className="positive">互动质量提升</td></tr>
-              <tr><td>发表篇数</td><td>15</td><td>19</td><td>3</td><td>Q3*阶段数据</td></tr>
+              <tr><td>净增关注</td><td>3,857</td><td>4,545</td><td>5,482</td><td className="positive">连续两个季度增长</td></tr>
+              <tr><td>日均净增</td><td>42.9</td><td>49.9</td><td>59.6</td><td className="positive">Q3 领先</td></tr>
+              <tr><td>总阅读人数</td><td>12,288</td><td>9,917</td><td>8,382</td><td>Q3 环比 -15.5%</td></tr>
+              <tr><td>篇均阅读</td><td>819.2</td><td>521.9</td><td>399.1</td><td>内容效率待提升</td></tr>
+              <tr><td>分享率</td><td>5.5%</td><td>6.5%</td><td>6.5%</td><td className="positive">互动质量保持稳定</td></tr>
+              <tr><td>发表篇数</td><td>15</td><td>19</td><td>21</td><td>发文量继续增加</td></tr>
             </tbody>
           </table>
         </div>
