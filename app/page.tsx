@@ -113,6 +113,7 @@ const quarterData = {
 } as const;
 
 const number = new Intl.NumberFormat("zh-CN");
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function delta(current: number, previous: number) {
   return ((current / previous - 1) * 100).toFixed(1);
@@ -140,7 +141,7 @@ export default function Home() {
     <main>
       <header className="topbar">
         <div className="brand">
-          <img className="brand-logo" src="/maycur-logo.png" alt="Maycur 每刻" />
+          <img className="brand-logo" src={`${basePath}/maycur-logo.png`} alt="Maycur 每刻" />
           <div>
             <span>微信公众号运营数据中心</span>
           </div>

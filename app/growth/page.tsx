@@ -52,6 +52,7 @@ const quarters = [
 ] as const;
 
 const number = new Intl.NumberFormat("zh-CN");
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const maxDailyNet = Math.max(...quarters.map((quarter) => quarter.dailyNet));
 const maxDailyNew = Math.max(...quarters.map((quarter) => quarter.dailyNew));
 
@@ -65,7 +66,7 @@ export default function GrowthComparison() {
     <main className="growth-page">
       <header className="topbar">
         <div className="brand">
-          <img className="brand-logo" src="/maycur-logo.png" alt="Maycur 每刻" />
+          <img className="brand-logo" src={`${basePath}/maycur-logo.png`} alt="Maycur 每刻" />
           <div>
             <span>微信公众号运营数据中心</span>
           </div>
@@ -90,7 +91,7 @@ export default function GrowthComparison() {
           </p>
         </div>
         <div className="growth-hero-brand">
-          <img src="/maycur-mascot.png" alt="每刻吉祥物每小刻" />
+          <img src={`${basePath}/maycur-mascot.png`} alt="每刻吉祥物每小刻" />
           <div className="growth-hero-stat">
             <span>每小刻关注增长播报</span>
             <strong>+9,563</strong>

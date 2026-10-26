@@ -1,19 +1,35 @@
-# vinext-starter
+# 2026 公众号季度数据看板
+
+每刻科技微信公众号 Q1、Q2、Q3 用户增长与内容运营数据分析看板。
+
+## 线上地址
+
+GitHub Pages：<https://emilyuuu88.github.io/wechat-official-account-dashboard/>
+
+推送到 `main` 分支后，GitHub Actions 会自动构建并更新网页，公开链接保持不变。
+
+## 本地使用
 
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
 Drizzle support.
 
-## Prerequisites
+### Prerequisites
 
 - Node.js `>=22.13.0`
 
-## Quick Start
+### Quick Start
 
 ```bash
 npm install
 npm run dev
 npm run build
+```
+
+验证 GitHub Pages 静态版本：
+
+```bash
+npm run build:pages
 ```
 
 This starter does not use `wrangler.jsonc`.
