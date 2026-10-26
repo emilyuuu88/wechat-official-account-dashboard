@@ -108,7 +108,7 @@ h1 { margin: 0; font-size: clamp(38px, 4.8vw, 66px); letter-spacing: -.055em; li
   min-width: min(100%, 420px);
   padding: 5px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 4px;
   background: #e9f0f3;
   border-radius: 17px;
@@ -175,7 +175,7 @@ h1 { margin: 0; font-size: clamp(38px, 4.8vw, 66px); letter-spacing: -.055em; li
 
 .trend-chart {
   height: 250px; margin-top: 24px; padding: 0 28px;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
   border-bottom: 1px solid var(--line);
   background: repeating-linear-gradient(to bottom, transparent 0, transparent 61px, rgba(219,230,236,.65) 62px);
 }
@@ -340,7 +340,7 @@ footer {
   max-width: 1328px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
 .quarter-column {
@@ -356,6 +356,7 @@ footer {
 }
 .quarter-column.q2 { --quarter: #4f7df3; --quarter-deep: #315bc8; }
 .quarter-column.q3 { --quarter: #7686ee; --quarter-deep: #5360c9; }
+.quarter-column.q4 { --quarter: #2563eb; --quarter-deep: #173ea5; }
 .quarter-column::before {
   content: "";
   position: absolute;

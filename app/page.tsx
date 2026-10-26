@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
-type QuarterKey = "Q1" | "Q2" | "Q3";
+type QuarterKey = "Q1" | "Q2" | "Q3" | "Q4*";
 
-const quarterOrder: QuarterKey[] = ["Q1", "Q2", "Q3"];
+const quarterOrder: QuarterKey[] = ["Q1", "Q2", "Q3", "Q4*"];
 
 const quarterData = {
   Q1: {
@@ -110,6 +110,40 @@ const quarterData = {
     ],
     takeaway: "净增关注与增长率均为三季度最高，内容阅读效率仍需修复。",
   },
+  "Q4*": {
+    label: "Q4*",
+    period: "10.01 — 10.25",
+    days: 25,
+    start: 48943,
+    end: 50218,
+    newFollowers: 1513,
+    unfollows: 339,
+    net: 1174,
+    growthRate: 2.4,
+    dailyNet: 47.0,
+    reads: 2641,
+    dailyReads: 105.6,
+    shares: 135,
+    saves: 4,
+    published: 4,
+    readsPerArticle: 660.3,
+    shareRate: 5.1,
+    saveRate: 0.15,
+    channels: [
+      ["公众号消息", 48.2],
+      ["朋友圈", 24.2],
+      ["搜一搜", 11.1],
+      ["公众号主页", 7.6],
+      ["聊天会话", 5.9],
+      ["其他（含推荐）", 3.0],
+    ],
+    articles: [
+      ["每刻科技入选“2026 AI财税服务TOP30”，以智能体深化财务数智化", 723, "品牌荣誉"],
+      ["每刻 × 滴滴企业版｜上车！和世界碰个面", 541, "生态合作"],
+      ["每刻科技8-10月重点功能速递：五大升级！智能风控、全球化、预算管理、流程协同与业务体验全面焕新", 531, "产品升级"],
+    ],
+    takeaway: "总粉丝突破 5 万，篇均阅读回升；取关率仍需持续关注。",
+  },
 } as const;
 
 const number = new Intl.NumberFormat("zh-CN");
@@ -120,7 +154,7 @@ function delta(current: number, previous: number) {
 }
 
 export default function Home() {
-  const [activeQuarter, setActiveQuarter] = useState<QuarterKey>("Q3");
+  const [activeQuarter, setActiveQuarter] = useState<QuarterKey>("Q4*");
   const active = quarterData[activeQuarter];
   const maxNet = Math.max(...quarterOrder.map((key) => quarterData[key].net));
   const maxReads = Math.max(...quarterOrder.map((key) => quarterData[key].dailyReads));
@@ -152,7 +186,7 @@ export default function Home() {
         </nav>
         <div className="updated">
           <span className="live-dot" />
-          数据更新至 2026.09.30
+          数据更新至 2026.10.25
         </div>
       </header>
 
@@ -161,7 +195,7 @@ export default function Home() {
           <p className="eyebrow">2026 PERFORMANCE OVERVIEW</p>
           <h1>公众号季度数据看板</h1>
           <p className="hero-note">
-            聚焦用户增长、内容效率与渠道质量，完整呈现 2026 年前三季度表现。
+            聚焦用户增长、内容效率与渠道质量。Q4 为截至 10 月 25 日的阶段数据。
           </p>
         </div>
         <div className="quarter-switch" aria-label="选择季度">
@@ -180,7 +214,7 @@ export default function Home() {
       </section>
 
       <section className="status-strip">
-        <span className="status-pill">完整季度</span>
+        <span className="status-pill">{active.label.endsWith("*") ? "阶段数据" : "完整季度"}</span>
         <strong>{active.label} · {active.period}</strong>
         <span>{active.days} 天数据</span>
         <span className="status-insight">{active.takeaway}</span>
@@ -271,7 +305,8 @@ export default function Home() {
           <div className="trend-foot">
             <div><span>Q2 净增环比</span><strong className="positive">+{delta(4545, 3857)}%</strong></div>
             <div><span>Q3 净增环比</span><strong className="positive">+{delta(5482, 4545)}%</strong></div>
-            <p>三个季度均为完整季度，可直接比较总量与日均效率。</p>
+            <div><span>当前总粉丝</span><strong className="positive">50,218</strong></div>
+            <p>* Q4 为 10 月 1—25 日阶段数据，优先比较日均效率。</p>
           </div>
         </article>
 
@@ -366,18 +401,18 @@ export default function Home() {
         <div className="insight-grid">
           <article>
             <span>01</span>
-            <h3>用户增长继续提速</h3>
-            <p>Q3 净增关注 5,482，环比增长 20.6%；日均净增 59.6，同样创前三季度最高。</p>
+            <h3>总粉丝突破 5 万</h3>
+            <p>截至 10 月 25 日平台期末总粉丝 50,218，Q4 日增减明细汇总净增 1,174。</p>
           </article>
           <article>
             <span>02</span>
-            <h3>阅读效率仍需修复</h3>
-            <p>Q3 发文 21 篇，但总阅读环比下降 15.5%，篇均阅读降至 399.1。</p>
+            <h3>篇均阅读开始回升</h3>
+            <p>Q4 阶段篇均阅读 660.3，较 Q3 提升 65.4%，但仍需观察完整季度表现。</p>
           </article>
           <article>
             <span>03</span>
-            <h3>放大高质量选题</h3>
-            <p>标杆客户、产品升级与产品方案占据 TOP3，建议围绕三类内容形成稳定矩阵。</p>
+            <h3>公众号消息贡献提升</h3>
+            <p>Q4 阶段公众号消息占比升至 48.2%，适合继续强化订阅用户的直接触达。</p>
           </article>
         </div>
       </section>
@@ -392,15 +427,15 @@ export default function Home() {
         <div className="table-wrap">
           <table>
             <thead>
-              <tr><th>指标</th><th>Q1</th><th>Q2</th><th>Q3</th><th>判断</th></tr>
+              <tr><th>指标</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4*</th><th>判断</th></tr>
             </thead>
             <tbody>
-              <tr><td>净增关注</td><td>3,857</td><td>4,545</td><td>5,482</td><td className="positive">连续两个季度增长</td></tr>
-              <tr><td>日均净增</td><td>42.9</td><td>49.9</td><td>59.6</td><td className="positive">Q3 领先</td></tr>
-              <tr><td>总阅读人数</td><td>12,288</td><td>9,917</td><td>8,382</td><td>Q3 环比 -15.5%</td></tr>
-              <tr><td>篇均阅读</td><td>819.2</td><td>521.9</td><td>399.1</td><td>内容效率待提升</td></tr>
-              <tr><td>分享率</td><td>5.5%</td><td>6.5%</td><td>6.5%</td><td className="positive">互动质量保持稳定</td></tr>
-              <tr><td>发表篇数</td><td>15</td><td>19</td><td>21</td><td>发文量继续增加</td></tr>
+              <tr><td>净增关注</td><td>3,857</td><td>4,545</td><td>5,482</td><td>1,174</td><td>Q4* 日增减明细汇总</td></tr>
+              <tr><td>日均净增</td><td>42.9</td><td>49.9</td><td>59.6</td><td>47.0</td><td className="positive">高于 Q1</td></tr>
+              <tr><td>总阅读人数</td><td>12,288</td><td>9,917</td><td>8,382</td><td>2,641</td><td>Q4* 阶段数据</td></tr>
+              <tr><td>篇均阅读</td><td>819.2</td><td>521.9</td><td>399.1</td><td>660.3</td><td className="positive">Q4* 效率回升</td></tr>
+              <tr><td>分享率</td><td>5.5%</td><td>6.5%</td><td>6.5%</td><td>5.1%</td><td>阶段互动率回落</td></tr>
+              <tr><td>发表篇数</td><td>15</td><td>19</td><td>21</td><td>4</td><td>Q4* 阶段数据</td></tr>
             </tbody>
           </table>
         </div>
@@ -408,6 +443,7 @@ export default function Home() {
 
       <footer>
         <p>数据源：微信公众平台导出数据 · 阅读人数采用“全部”渠道去重口径</p>
+        <p>10 月 25 日平台期末总粉丝为 50,218；日增减明细汇总为 50,117，差额 101 单独保留说明。</p>
         <p>© 2026 每刻科技 · 公众号运营数据看板</p>
       </footer>
     </main>

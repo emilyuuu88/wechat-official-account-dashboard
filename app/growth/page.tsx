@@ -49,6 +49,23 @@ const quarters = [
     unfollowRate: 20.8,
     tone: "q3",
   },
+  {
+    key: "Q4*",
+    period: "10.01 — 10.25",
+    badge: "25天阶段数据",
+    days: 25,
+    start: 48943,
+    end: 50218,
+    flowEnd: 50117,
+    newFollowers: 1513,
+    unfollows: 339,
+    net: 1174,
+    dailyNew: 60.5,
+    dailyNet: 47.0,
+    growthRate: 2.4,
+    unfollowRate: 22.4,
+    tone: "q4",
+  },
 ] as const;
 
 const number = new Intl.NumberFormat("zh-CN");
@@ -77,7 +94,7 @@ export default function GrowthComparison() {
         </nav>
         <div className="updated">
           <span className="live-dot" />
-          数据更新至 2026.09.30
+          数据更新至 2026.10.25
         </div>
       </header>
 
@@ -93,8 +110,8 @@ export default function GrowthComparison() {
           <img src={`${basePath}/maycur-mascot.png`} alt="每刻吉祥物每小刻" />
           <div className="growth-hero-stat">
             <span>每小刻关注增长播报</span>
-            <strong>+13,884</strong>
-            <small>年内累计净增 · 35,059 → 48,943</small>
+            <strong>50,218</strong>
+            <small>10 月 25 日平台期末总粉丝</small>
           </div>
         </div>
       </section>
@@ -109,13 +126,13 @@ export default function GrowthComparison() {
         <div className="featured-insight">
           <span>Q3 vs Q2</span>
           <strong>净增关注 +20.6%</strong>
-          <p>日均净增同步提升 19.4%</p>
+          <p>前三季度增长规模持续扩大</p>
         </div>
         <i />
         <div>
-          <span>增长质量</span>
-          <strong>取关率降至 20.8%</strong>
-          <p>新增扩大的同时，流失比例下降</p>
+          <span>Q4* 当前进度</span>
+          <strong>总粉丝突破 5 万</strong>
+          <p>截至 10 月 25 日为 50,218</p>
         </div>
       </section>
 
@@ -134,7 +151,10 @@ export default function GrowthComparison() {
             <div className="net-highlight">
               <span>净增关注</span>
               <strong>+{number.format(quarter.net)}</strong>
-              <small>{number.format(quarter.start)} → {number.format(quarter.end)}</small>
+              <small>
+                {number.format(quarter.start)} → {number.format("flowEnd" in quarter ? quarter.flowEnd : quarter.end)}
+                {"flowEnd" in quarter ? "（明细汇总）" : ""}
+              </small>
             </div>
 
             <div className="velocity-chart">
@@ -178,12 +198,12 @@ export default function GrowthComparison() {
           <article>
             <span>保持</span>
             <h3>强化高质量获客</h3>
-            <p>Q3 日均新增达到 75.2，较 Q2 提升 17.9%，继续强化标杆客户与 AI 产品内容。</p>
+            <p>Q4 阶段日均新增 60.5，仍高于 Q1；继续强化标杆客户与 AI 产品内容。</p>
           </article>
           <article>
             <span>优化</span>
             <h3>控制关注流失</h3>
-            <p>取关率连续下降，建议复盘高取关日期及对应推送主题，持续降低波动。</p>
+            <p>Q4 阶段取关率为 22.4%，较 Q3 回升，建议复盘高取关日期及对应推送主题。</p>
           </article>
           <article>
             <span>验证</span>
@@ -194,7 +214,7 @@ export default function GrowthComparison() {
       </section>
 
       <footer>
-        <p>Q1、Q2、Q3 均为完整季度，用户增长按微信公众平台每日数据汇总。</p>
+        <p>Q1、Q2、Q3 为完整季度；Q4* 为 2026.10.01—10.25 阶段数据。Q4 平台期末总量为 50,218，日增减明细累计为 50,117。</p>
         <p>© 2026 每刻科技 · 用户增长季度对比</p>
       </footer>
     </main>
